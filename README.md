@@ -211,6 +211,4 @@ POST /optimize-route
 
 ---
 
-This document equips developers, including Cursor, with everything needed to build, run, and deploy the NourishNet route optimization microservice with integrated real-time tracking and frontend connectivity.
-
-
+This document equips developers, including Cursor, with everything needed to build, run, and deploy the NourishNet route optimization microservice with integrated real-time tracking and frontend connectivity. 
