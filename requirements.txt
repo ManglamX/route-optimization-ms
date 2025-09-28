@@ -1,0 +1,10 @@
+Flask==2.3.3
+Flask-CORS==4.0.0
+pymongo==4.5.0
+python-socketio==5.8.0
+python-dotenv==1.0.0
+requests==2.31.0
+ortools>=9.8.3296
+geopy==2.3.0
+gunicorn==21.2.0
+eventlet==0.36.1

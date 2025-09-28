@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  route-optimization-ms:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/nourishnet_routes
+      - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
+      - FLASK_ENV=production
+    depends_on:
+      - mongo
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=nourishnet_routes
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+
+  socketio-server:
+    build: .
+    command: python socketio_server.py
+    ports:
+      - "5001:5001"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/nourishnet_routes
+      - SOCKETIO_PORT=5001
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
